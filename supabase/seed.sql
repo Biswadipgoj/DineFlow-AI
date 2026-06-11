@@ -1,0 +1,34 @@
+-- Demo seed data
+insert into organizations (id, name) values ('00000000-0000-0000-0000-000000000001','Demo Org');
+
+insert into restaurants (id, org_id, name, slug, gstin, fssai_no, address, city, state, pincode, phone) values
+  ('00000000-0000-0000-0000-000000000002','00000000-0000-0000-0000-000000000001',
+   'Spice Garden','spice-garden','27AABCU9603R1ZX','11521999000123',
+   '12 MG Road','Mumbai','Maharashtra','400001','9876543210');
+
+insert into branches (id, restaurant_id, name, address) values
+  ('00000000-0000-0000-0000-000000000003','00000000-0000-0000-0000-000000000002','Main Branch','12 MG Road, Mumbai');
+
+insert into dining_tables (restaurant_id, branch_id, label, capacity, area, qr_code) values
+  ('00000000-0000-0000-0000-000000000002','00000000-0000-0000-0000-000000000003','T1',4,'Ground Floor','ABCD1234'),
+  ('00000000-0000-0000-0000-000000000002','00000000-0000-0000-0000-000000000003','T2',2,'Ground Floor','ABCD1235'),
+  ('00000000-0000-0000-0000-000000000002','00000000-0000-0000-0000-000000000003','T3',6,'Rooftop','ABCD1236'),
+  ('00000000-0000-0000-0000-000000000002','00000000-0000-0000-0000-000000000003','T4',4,'Rooftop','ABCD1237'),
+  ('00000000-0000-0000-0000-000000000002','00000000-0000-0000-0000-000000000003','T5',8,'Private Room','ABCD1238');
+
+insert into menu_categories (id, restaurant_id, name, sort_order) values
+  ('00000000-0000-0000-0000-000000000004','00000000-0000-0000-0000-000000000002','Starters',1),
+  ('00000000-0000-0000-0000-000000000005','00000000-0000-0000-0000-000000000002','Mains',2),
+  ('00000000-0000-0000-0000-000000000006','00000000-0000-0000-0000-000000000002','Beverages',3);
+
+insert into menu_items (restaurant_id, category_id, name, price_paise, is_veg, gst_rate, hsn_sac) values
+  ('00000000-0000-0000-0000-000000000002','00000000-0000-0000-0000-000000000004','Paneer Tikka',29900,true,5,'996331'),
+  ('00000000-0000-0000-0000-000000000002','00000000-0000-0000-0000-000000000004','Chicken 65',34900,false,5,'996331'),
+  ('00000000-0000-0000-0000-000000000002','00000000-0000-0000-0000-000000000005','Butter Chicken',39900,false,5,'996331'),
+  ('00000000-0000-0000-0000-000000000002','00000000-0000-0000-0000-000000000005','Dal Makhani',27900,true,5,'996331'),
+  ('00000000-0000-0000-0000-000000000002','00000000-0000-0000-0000-000000000006','Mango Lassi',14900,true,5,'996331');
+
+insert into subscriptions (restaurant_id, plan_id, status, trial_end) values
+  ('00000000-0000-0000-0000-000000000002',
+   (select id from plans where code='mvp'),
+   'trialing', now() + interval '14 days');

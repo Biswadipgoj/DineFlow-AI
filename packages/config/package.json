@@ -1,0 +1,10 @@
+{
+  "name": "@dinenovaai/config",
+  "version": "0.1.0",
+  "private": true,
+  "exports": {
+    "./tailwind": "./tailwind.preset.ts",
+    "./tsconfig": "./tsconfig.base.json",
+    "./eslint": "./eslint.config.js"
+  }
+}
