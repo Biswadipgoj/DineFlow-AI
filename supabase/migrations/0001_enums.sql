@@ -1,0 +1,14 @@
+-- All enums for DineNova AI
+create type user_role as enum ('super_admin','owner','manager','cashier','waiter','chef','customer');
+create type order_type as enum ('dine_in','takeaway','delivery');
+create type order_status as enum ('open','placed','in_kitchen','ready','served','billed','paid','cancelled');
+create type item_status as enum ('queued','cooking','ready','served','cancelled');
+create type session_status as enum ('open','bill_requested','settled','cancelled');
+create type payment_status as enum ('created','pending','success','failed','refunded','partially_refunded');
+create type payment_method as enum ('upi','card','cash','wallet','netbanking','aggregator');
+create type channel_type as enum ('dine_in','takeaway','own_web','swiggy','zomato','other');
+create type sub_status as enum ('trialing','active','past_due','cancelled','paused');
+create type po_status as enum ('draft','sent','partially_received','received','cancelled');
+create type expense_category as enum ('rent','electricity','gas','salary','supplies','marketing','repairs','misc');
+create type attendance_status as enum ('present','absent','half_day','leave','week_off');
+create type kot_status as enum ('pending','printing','printed','cancelled');

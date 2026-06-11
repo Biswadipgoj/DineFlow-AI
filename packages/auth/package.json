@@ -1,0 +1,17 @@
+{
+  "name": "@dinenovaai/auth",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./roles": "./src/roles.ts",
+    "./entitlements": "./src/entitlements.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}

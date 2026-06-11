@@ -1,0 +1,17 @@
+{
+  "name": "@dinenovaai/integrations",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./razorpay": "./src/razorpay.ts",
+    "./whatsapp": "./src/whatsapp.ts"
+  },
+  "dependencies": {
+    "razorpay": "^2.9.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}
