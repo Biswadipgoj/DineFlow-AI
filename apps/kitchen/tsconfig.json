@@ -1,6 +1,19 @@
 {
-  "extends": "@dinenovaai/config/tsconfig",
-  "compilerOptions": { "paths": { "@/*": ["./src/*"] } },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "extends": "../../packages/config/tsconfig.base.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "next-env.d.ts",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

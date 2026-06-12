@@ -16,7 +16,7 @@ interface KOT {
   created_at: string;
   orders: {
     order_number: string;
-    dining_tables: { label: string } | null;
+    table_sessions: { dining_tables: { label: string } | null } | null;
     order_items: Array<{
       id: string;
       name_snapshot: string;
@@ -41,12 +41,12 @@ export default function KitchenPage() {
         .from('kots')
         .select(`
           id, kot_number, order_id, station, status, created_at,
-          orders(order_number, dining_tables(label), order_items(id, name_snapshot, qty, modifiers, status))
+          orders(order_number, table_sessions(dining_tables(label)), order_items(id, name_snapshot, qty, modifiers, status))
         `)
         .neq('status', 'cancelled')
         .order('created_at', { ascending: true });
 
-      setKots((data as KOT[]) ?? []);
+      setKots((data as unknown as KOT[]) ?? []);
       setLoading(false);
     };
 

@@ -2,6 +2,8 @@ import { createServiceClient } from '@dinenovaai/db/service';
 import { toRupees } from '@dinenovaai/utils/money';
 import { StatCard } from '@dinenovaai/ui';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminDashboard() {
   const sb = createServiceClient();
 

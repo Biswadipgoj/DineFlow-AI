@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import MenuPage from './MenuPage';
 
 interface Props {
-  params: { slug: string; tableCode: string };
+  params: Promise<{ slug: string; tableCode: string }>;
 }
 
 export default async function TablePage({ params }: Props) {

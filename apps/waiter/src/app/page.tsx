@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Plus, Filter } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { fadeIn } from '@dinenovaai/ui/animations';
 import { createClient } from '@dinenovaai/db/client';
 
@@ -34,11 +34,11 @@ const STATUS_LABEL: Record<SessionStatus, string> = {
   cancelled: 'Cancelled',
 };
 
-type Filter = 'all' | 'open' | 'bill_requested' | 'free';
+type StatusFilter = 'all' | 'open' | 'bill_requested' | 'free';
 
 export default function WaiterPage() {
   const [sessions, setSessions] = useState<TableSession[]>([]);
-  const [filter, setFilter] = useState<Filter>('all');
+  const [filter, setFilter] = useState<StatusFilter>('all');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -68,7 +68,7 @@ export default function WaiterPage() {
           <span className="text-sm text-neutral-500">{sessions.length} active</span>
         </div>
         <div className="flex gap-2 overflow-x-auto scrollbar-hide">
-          {(['all', 'open', 'bill_requested', 'free'] as Filter[]).map(f => (
+          {(['all', 'open', 'bill_requested', 'free'] as StatusFilter[]).map(f => (
             <button key={f} onClick={() => setFilter(f)}
               className={`flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-medium capitalize transition-colors ${
                 filter === f ? 'bg-brand-500 text-white' : 'bg-neutral-100 text-neutral-600'

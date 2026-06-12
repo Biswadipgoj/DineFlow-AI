@@ -1,6 +1,8 @@
-import { createServerClient } from '@supabase/ssr';
+import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import type { Database } from './types';
+
+type CookieToSet = { name: string; value: string; options: CookieOptions };
 
 export const createServerSupabaseClient = async () => {
   const cookieStore = await cookies();
@@ -10,7 +12,8 @@ export const createServerSupabaseClient = async () => {
     {
       cookies: {
         getAll: () => cookieStore.getAll(),
-        setAll: (cs) => cs.forEach(({ name, value, options }) => cookieStore.set(name, value, options)),
+        setAll: (cs: CookieToSet[]) =>
+          cs.forEach(({ name, value, options }) => cookieStore.set(name, value, options)),
       },
     }
   );
