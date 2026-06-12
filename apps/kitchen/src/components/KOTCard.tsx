@@ -10,7 +10,7 @@ interface KOT {
   created_at: string;
   orders: {
     order_number: string;
-    dining_tables: { label: string } | null;
+    table_sessions: { dining_tables: { label: string } | null } | null;
     order_items: Array<{
       id: string;
       name_snapshot: string;
@@ -35,7 +35,9 @@ function TimeElapsed({ createdAt }: { createdAt: string }) {
   return <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${color}`}>{elapsed}m</span>;
 }
 
-const STATUS_CYCLE: Record<string, string> = { queued: 'cooking', cooking: 'ready' };
+type ItemStatus = 'queued' | 'cooking' | 'ready' | 'served' | 'cancelled';
+
+const STATUS_CYCLE: Partial<Record<ItemStatus, ItemStatus>> = { queued: 'cooking', cooking: 'ready' };
 const STATUS_COLORS: Record<string, string> = {
   queued: 'bg-blue-100 text-blue-700',
   cooking: 'bg-amber-100 text-amber-700',
@@ -43,8 +45,8 @@ const STATUS_COLORS: Record<string, string> = {
 };
 
 export default function KOTCard({ kot, onUpdate }: { kot: KOT; onUpdate: (id: string, status: string) => void }) {
-  const [itemStatuses, setItemStatuses] = useState<Record<string, string>>(
-    Object.fromEntries(kot.orders.order_items.map(i => [i.id, i.status]))
+  const [itemStatuses, setItemStatuses] = useState<Record<string, ItemStatus>>(
+    Object.fromEntries(kot.orders.order_items.map(i => [i.id, i.status as ItemStatus]))
   );
   const supabase = createClient();
 
@@ -72,9 +74,9 @@ export default function KOTCard({ kot, onUpdate }: { kot: KOT; onUpdate: (id: st
           <span className="font-display font-bold text-2xl text-neutral-900">
             {kot.orders.order_number}
           </span>
-          {kot.orders.dining_tables && (
+          {kot.orders.table_sessions?.dining_tables && (
             <span className="bg-neutral-100 text-neutral-700 text-sm font-medium px-2 py-0.5 rounded-lg">
-              {kot.orders.dining_tables.label}
+              {kot.orders.table_sessions.dining_tables.label}
             </span>
           )}
         </div>

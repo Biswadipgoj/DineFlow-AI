@@ -1,6 +1,6 @@
 import type { Config } from 'tailwindcss';
 
-const preset: Config = {
+const preset: Omit<Config, 'content'> = {
   darkMode: ['class'],
   theme: {
     extend: {
@@ -40,6 +40,10 @@ const preset: Config = {
           card:    '#ffffff',
           sunken:  '#f5f5f4',
         },
+        success: { light: '#dcfce7', DEFAULT: '#16a34a', dark: '#166534' },
+        warning: { light: '#fef9c3', DEFAULT: '#ca8a04', dark: '#854d0e' },
+        error:   { light: '#fee2e2', DEFAULT: '#dc2626', dark: '#991b1b' },
+        info:    { light: '#dbeafe', DEFAULT: '#2563eb', dark: '#1e40af' },
       },
       borderRadius: {
         '4xl': '2rem',

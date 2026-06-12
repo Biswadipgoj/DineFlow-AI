@@ -15,7 +15,6 @@ const withPWA = require('next-pwa')({
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ['*.supabase.co', 'supabase.co'],
     remotePatterns: [{ protocol: 'https', hostname: '**.supabase.co' }],
   },
 };

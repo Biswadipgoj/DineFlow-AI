@@ -5,3 +5,12 @@ dist/
 *.env
 !.env.example
 .DS_Store
+
+# Build artifacts
+*.tsbuildinfo
+
+# Generated PWA service workers
+apps/*/public/sw.js
+apps/*/public/sw.js.map
+apps/*/public/workbox-*.js
+apps/*/public/workbox-*.js.map

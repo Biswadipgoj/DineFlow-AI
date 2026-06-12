@@ -6,5 +6,9 @@
     "./tailwind": "./tailwind.preset.ts",
     "./tsconfig": "./tsconfig.base.json",
     "./eslint": "./eslint.config.js"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.4.0"
   }
 }

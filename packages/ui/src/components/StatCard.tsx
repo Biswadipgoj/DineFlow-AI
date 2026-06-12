@@ -14,7 +14,7 @@ export function StatCard({ label, value, delta, className, children }: StatCardP
   return (
     <Card className={cn('flex flex-col gap-2', className)}>
       <p className="text-label text-neutral-500">{label}</p>
-      <p className="text-display text-neutral-900 font-poppins">{value}</p>
+      <p className="text-display text-neutral-900">{value}</p>
       {delta !== undefined && (
         <span className={cn(
           'text-caption font-medium',
